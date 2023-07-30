@@ -8,10 +8,11 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="PokeVue!"/>
+      <HelloWorld msg="PokeVue!" culo="4" otradata="coso"/>
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+
+        <RouterLink v-for="(ruta,r) in rutas" :key="r" :to="ruta.path">{{ruta.name}}</RouterLink>
         <!-- <RouterLink to="/about">About</RouterLink> -->
       </nav>
     </div>
@@ -20,6 +21,25 @@ import HelloWorld from './components/HelloWorld.vue'
   <RouterView />
 
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      rutas:[
+        {
+          name:'Home',
+          path:'/'
+        },
+        {
+          name:'Productos',
+          path:'/productos'
+        }
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped>
 header {
